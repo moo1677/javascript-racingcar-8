@@ -13,7 +13,25 @@ class App {
     car_str.forEach((element) => {
       car_array.push({ car_name: element, step: 0 });
     });
+    runRacingGame(num_race, car_array);
   }
 }
+const runRacingGame = (num_race, car_array) => {
+  Console.print("\n실행 결과");
+  for (let i = 0; i < num_race; i++) {
+    moveCar(car_array);
+  }
+};
+const moveCar = (car_array) => {
+  car_array.forEach((e) => {
+    if (decideRandomly()) {
+      e.step++;
+    }
+  });
+};
+const decideRandomly = () => {
+  const random_num = MissionUtils.Random.pickNumberInRange(0, 9);
+  return random_num >= 4;
+};
 
 export default App;
