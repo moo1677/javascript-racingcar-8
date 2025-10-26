@@ -10,6 +10,9 @@ class App {
       "시도할 횟수는 몇 회인가요?\n"
     );
     car_str = car_str.split(",");
+    for (let i of car_str) {
+      car_array.push({ car_name: i, step: 0 });
+    }
   }
 }
 
