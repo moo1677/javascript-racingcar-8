@@ -7,6 +7,7 @@ class App {
       let car_str = await inputCarStr();
       initRacingGame(car_str, car_array);
       const num_race = await inputNumRace();
+      checkNumRace(num_race);
       runRacingGame(car_array, num_race);
     } catch (error) {
       Console.print(`[ERROR] ${error.message}`);
@@ -45,6 +46,10 @@ const checkCarNameLength = (car_str) => {
       throw new Error("자동차 이름은 1자 이상 6자 이하입니다.");
   });
 };
+const checkNumRace = (num) => {
+  Console.print(num);
+  if (num < 1 || !num) throw new Error("1 이상의 숫자를 입력해주세요");
+};
 /* 레이싱게임 실행 */
 const runRacingGame = (car_array, num_race) => {
   let step_max = 1;
@@ -62,12 +67,13 @@ const startRace = (car_array, num_race, step_max) => {
 };
 const moveCar = (car_array, step_max) => {
   car_array.forEach((e) => {
-    if (decideRandomly()) {
-      e.step++;
-    }
-    step_max = decideMaxStep(step_max, e.step);
+    step_max = updateStep(e, step_max);
   });
   return step_max;
+};
+const updateStep = (car, step_max) => {
+  if (decideRandomly()) car.step++;
+  return decideMaxStep(step_max, car.step);
 };
 const decideRandomly = () => {
   const random_num = MissionUtils.Random.pickNumberInRange(0, 9);
