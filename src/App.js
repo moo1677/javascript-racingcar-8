@@ -19,8 +19,7 @@ class App {
       const printWinner = new PrintWinner(carArray, maxStep);
       printWinner.run();
     } catch (error) {
-      Console.print(`[ERROR] ${error.message}`);
-      throw new Error("[ERROR]");
+      throw new Error(`[ERROR] ${error.message}`);
     }
   }
 }
