@@ -1,13 +1,13 @@
 import { checkCarNames } from "./checkInput.js";
 
-export const parseCar = (car_str) => {
-  const car_names = car_str.split(",");
+export const parseCar = (cars) => {
+  const carNames = cars.split(",");
 
-  checkCarNames(car_names);
+  checkCarNames(carNames);
 
-  return createCarObj(car_names);
+  return createCarObj(carNames);
 };
 
-const createCarObj = (car_names) => {
-  return car_names.map((element) => ({ car_name: element, step: 0 }));
+const createCarObj = (carNames) => {
+  return carNames.map((element) => ({ name: element, step: 0 }));
 };

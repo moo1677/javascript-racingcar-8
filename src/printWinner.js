@@ -1,16 +1,16 @@
 import { Console } from "@woowacourse/mission-utils";
 
-export const printWinner = (car_array, step_max) => {
-  const winner = decideWinner(car_array, step_max);
+export const printWinner = (carArray, stepMax) => {
+  const winner = decideWinner(carArray, stepMax);
   winnerPrint(winner);
 };
-const decideWinner = (car_array, step_max) => {
+const decideWinner = (carArray, stepMax) => {
   const winner_array = [];
-  car_array.map((e) => winner_array.push(selectWinner(e, step_max)));
+  carArray.map((e) => winner_array.push(selectWinner(e, stepMax)));
   return winner_array.filter(Boolean);
 };
-const selectWinner = (car, step_max) => {
-  if (car.step === step_max) return car.car_name;
+const selectWinner = (car, stepMax) => {
+  if (car.step === stepMax) return car.name;
 };
 const winnerPrint = (winner) => {
   Console.print(`최종 우승자 : ${winner.join(", ")}`);

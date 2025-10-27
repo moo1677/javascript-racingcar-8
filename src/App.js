@@ -8,14 +8,14 @@ import { printWinner } from "./printWinner.js";
 class App {
   async run() {
     try {
-      let car_str = await input.carStr();
-      const car_array = parseCar(car_str);
+      let cars = await input.carStr();
+      const carArray = parseCar(cars);
 
-      const num_race = await input.numRace();
-      checkNumRace(num_race);
+      const totalAttempts = await input.numRace();
+      checkNumRace(totalAttempts);
 
-      const step_max = runRacingGame(car_array, num_race);
-      printWinner(car_array, step_max);
+      let stepMax = runRacingGame(carArray, totalAttempts);
+      printWinner(carArray, stepMax);
     } catch (error) {
       Console.print(`[ERROR] ${error.message}`);
       throw new Error("[ERROR]");

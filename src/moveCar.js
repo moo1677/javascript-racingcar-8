@@ -1,25 +1,25 @@
 import { Console, MissionUtils } from "@woowacourse/mission-utils";
 
-export const runRacingGame = (car_array, num_race) => {
-  let step_max = 1;
-  return startRace(car_array, num_race, step_max);
+export const runRacingGame = (carArray, totalAttempts) => {
+  let stepMax = 1;
+  return startRace(carArray, totalAttempts, stepMax);
 };
-const startRace = (car_array, num_race, step_max) => {
-  for (let i = 0; i < num_race; i++) {
-    step_max = moveCar(car_array, step_max);
-    printCarMove(car_array);
+const startRace = (carArray, totalAttempts, stepMax) => {
+  for (let i = 0; i < totalAttempts; i++) {
+    stepMax = moveCar(carArray, stepMax);
+    printCarMove(carArray);
   }
-  return step_max;
+  return stepMax;
 };
-const moveCar = (car_array, step_max) => {
-  car_array.forEach((e) => {
-    step_max = updateStep(e, step_max);
+const moveCar = (carArray, stepMax) => {
+  carArray.forEach((e) => {
+    stepMax = updateStep(e, stepMax);
   });
-  return step_max;
+  return stepMax;
 };
-const updateStep = (car, step_max) => {
+const updateStep = (car, stepMax) => {
   if (decideRandomly()) car.step++;
-  return decideMaxStep(step_max, car.step);
+  return decideMaxStep(stepMax, car.step);
 };
 const decideRandomly = () => {
   const random_num = MissionUtils.Random.pickNumberInRange(0, 9);
@@ -29,9 +29,9 @@ const decideMaxStep = (max, step) => {
   if (max < step) return step;
   return max;
 };
-const printCarMove = (car_array) => {
-  car_array.forEach((e) => {
-    Console.print(`${e.car_name} : ${"-".repeat(e.step)}`);
+const printCarMove = (carArray) => {
+  carArray.forEach((e) => {
+    Console.print(`${e.name} : ${"-".repeat(e.step)}`);
   });
   Console.print("\n");
 };
