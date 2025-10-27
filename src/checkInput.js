@@ -7,5 +7,6 @@ export const checkCarNames = (names) => {
 };
 
 export const checkNumRace = (num) => {
+  if (!Number.isNaN(num)) throw new Error("유효한 숫자를 입력해주세요");
   if (num < 1 || !num) throw new Error("1 이상의 숫자를 입력해주세요");
 };
