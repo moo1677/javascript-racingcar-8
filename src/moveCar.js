@@ -22,8 +22,7 @@ const updateStep = (car, stepMax) => {
   return decideMaxStep(stepMax, car.step);
 };
 const decideRandomly = () => {
-  const random_num = MissionUtils.Random.pickNumberInRange(0, 9);
-  return random_num >= 4;
+  return MissionUtils.Random.pickNumberInRange(0, 9) >= 4;
 };
 const decideMaxStep = (max, step) => {
   if (max < step) return step;
