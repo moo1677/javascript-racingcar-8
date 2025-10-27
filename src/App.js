@@ -1,9 +1,9 @@
 import { Console } from "@woowacourse/mission-utils";
 import input from "./input.js";
 import { parseCar } from "./parseCar.js";
-import { checkNumRace } from "./checkInput.js";
-import { runRacingGame } from "./moveCar.js";
-import { printWinner } from "./printWinner.js";
+import checkInput from "./checkInput.js";
+import RacingGame from "./RacingGame.js";
+import PrintWinner from "./PrintWinner.js";
 
 class App {
   async run() {
@@ -12,10 +12,12 @@ class App {
       const carArray = parseCar(cars);
 
       const totalAttempts = await input.numRace();
-      checkNumRace(totalAttempts);
+      checkInput.numRace(totalAttempts);
 
-      let stepMax = runRacingGame(carArray, totalAttempts);
-      printWinner(carArray, stepMax);
+      const game = new RacingGame(carArray, totalAttempts);
+      const maxStep = game.run();
+      const printWinner = new PrintWinner(carArray, maxStep);
+      printWinner.run();
     } catch (error) {
       Console.print(`[ERROR] ${error.message}`);
       throw new Error("[ERROR]");

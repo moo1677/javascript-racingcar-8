@@ -1,9 +1,9 @@
-import { checkCarNames } from "./checkInput.js";
+import checkInput from "./checkInput.js";
 
 export const parseCar = (cars) => {
   const carNames = cars.split(",");
 
-  checkCarNames(carNames);
+  checkInput.carNames(carNames);
 
   return createCarObj(carNames);
 };
