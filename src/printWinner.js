@@ -6,6 +6,7 @@ class PrintWinner {
     this.stepMax = stepMax;
     this.winner = [];
   }
+
   run() {
     this.decideWinner();
     this.winnerPrint();
