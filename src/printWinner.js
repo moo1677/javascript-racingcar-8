@@ -11,9 +11,9 @@ class PrintWinner {
     this.winnerPrint();
   }
   decideWinner() {
-    const winner_array = [];
-    this.carArray.map((car) => winner_array.push(this.selectWinner(car)));
-    this.winner = winner_array.filter(Boolean);
+    this.winner = this.carArray
+      .filter((car) => car.step == this.stepMax)
+      .map((car) => car.name);
   }
   selectWinner(car) {
     if (car.step === this.stepMax) return car.name;
