@@ -8,10 +8,10 @@ import PrintWinner from "./PrintWinner.js";
 class App {
   async run() {
     try {
-      let cars = input.carStr();
+      let cars = await input.carStr();
       const carArray = parseCar(cars);
 
-      const totalAttempts = input.numRace();
+      const totalAttempts = await input.numRace();
       checkInput.numRace(totalAttempts);
 
       const game = new RacingGame(carArray, totalAttempts);
